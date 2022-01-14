@@ -870,6 +870,7 @@ window.onload = function () {
 
 	function auto() {
 		let index_rol = 0
+		let masCopy = []
 		let quantity_user = document.querySelector('.user-form').value
 		if (quantity_user > 30) {
 			alert('Не вводите так много!')
@@ -879,6 +880,7 @@ window.onload = function () {
 			} else {
 				let quantity_user_massiv = []
 				let area_rand = []
+
 				let i = 1
 				let x = 0
 				let i_new = 1
@@ -925,6 +927,13 @@ window.onload = function () {
 						picture = 'img/sher.jpg'
 					}
 					console.log(i_new + '   ' + roles_massiv[rand])
+
+					masCopy = [...masCopy, roles_massiv[rand]]
+					let mapnumber = 1
+
+					let newmassrand = masCopy.map(function (num) {
+						return ' ' + mapnumber++ + '.' + ' ' + num
+					})
 					document.querySelector('.card__bodya').innerHTML += `
 										<div class="card__item">
 											<div class="card__picture _ibg">
@@ -936,6 +945,29 @@ window.onload = function () {
 											</div>
 										</div >
 `
+
+					document.querySelector('.button-copy').onclick = function () {
+						copyText = newmassrand
+						navigator.clipboard
+							.writeText(copyText)
+							.then(() => {
+								// Получилось!
+							})
+							.catch(err => {
+								console.log('Something went wrong', err)
+							})
+					}
+					let tooltip = document.getElementById('myTooltip')
+					tooltip.innerHTML = 'Cкопировать: ' + newmassrand
+
+					function outFunc() {
+						let tooltip = document.getElementById('myTooltip')
+						tooltip.innerHTML = 'Скопировать роли'
+					}
+					function outFuncin() {
+						let tooltip = document.getElementById('myTooltipin')
+						main.innerHTML = 'Скопировать роли'
+					}
 					i_new = i_new + 1
 				}
 				document.querySelector('.card__end').innerHTML = 'Веселой вам игры!'
