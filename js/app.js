@@ -887,7 +887,7 @@ window.onload = function () {
 				let index = 0
 				let counter2 = quantity_user
 				let index_random_massiv = 0
-				let roles_massiv = ['Мафия', 'Комиссар', 'Доктор']
+				let roles_massiv = ['Мафия', 'Комиссар', 'Доктор', 'Дон']
 				let mafia = Math.floor(quantity_user / 3.2)
 				let random_element_massiv = ''
 				document.querySelector('.card__bodya').innerHTML = ''
@@ -919,6 +919,9 @@ window.onload = function () {
 					}
 					if (roles_massiv[rand] == 'Мафия') {
 						picture = 'img/1550944291_dobryy-volk-art.jpg'
+					}
+					if (roles_massiv[rand] == 'Дон') {
+						picture = 'img/image_562609151347263189912.png'
 					}
 					if (roles_massiv[rand] == 'Доктор') {
 						picture = 'img/doc.jpg'
